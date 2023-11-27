@@ -1,5 +1,5 @@
 import Link from "next/link";
-const LandingPage = ({ currentUser, tickets }) => {
+const LandingPage = ({ tickets }) => {
   const ticketList = tickets.map((ticket) => {
     return (
       <tr key={ticket.id}>
@@ -31,15 +31,8 @@ const LandingPage = ({ currentUser, tickets }) => {
 };
 
 LandingPage.getInitialProps = async (context, client, currentUser) => {
-  console.log("hello");
   const { data } = await client.get("/api/tickets");
   return { tickets: data };
 };
 
 export default LandingPage;
-
-/*
-<Link href="/tickets/[ticketId]" as={`/tickets/${ticket.id}`}>
-  View
-</Link>
-*/
