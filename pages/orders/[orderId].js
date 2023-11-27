@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 const OrderShow = ({ order }) => {
-  const [timeLeft, setTimeLeft] = useState("");
+  const [timeLeft, setTimeLeft] = useState(0);
 
   useEffect(() => {
     const findTimeLeft = () => {
@@ -17,6 +17,15 @@ const OrderShow = ({ order }) => {
   }, []);
 
   console.log({ order });
+
+  if (timeLeft < 0) {
+    return (
+      <div>
+        OrderShow
+        <div> Time to purchase ticket has expired.</div>
+      </div>
+    );
+  }
   return (
     <div>
       OrderShow
